@@ -3,6 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#009d82">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Estadías UTH">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/logo_uth_2024.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('img/logo_uth_2024.png') }}">
+    
     <title>Iniciar Sesión - Sistema de Estadías UTH</title>
     
     <!-- Fonts -->
@@ -204,6 +214,69 @@
                 eyeIcon.classList.remove('fa-eye-slash');
                 eyeIcon.classList.add('fa-eye');
             }
+        });
+    </script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('{{ asset("sw.js") }}')
+                    .then(registration => {
+                        console.log('ServiceWorker registrado correctamente:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New content available, show update notification
+                                    if (confirm('Hay una nueva versión disponible. ¿Deseas actualizar?')) {
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.log('Error al registrar ServiceWorker:', error);
+                    });
+            });
+        }
+
+        // Handle app install prompt
+        let deferredPrompt;
+        const installButton = document.createElement('button');
+        installButton.textContent = 'Instalar Aplicación';
+        installButton.className = 'fixed bottom-4 right-4 bg-uth-green text-white px-4 py-2 rounded-lg shadow-lg hover:bg-uth-green-dark transition-colors z-50';
+        installButton.style.display = 'none';
+        document.body.appendChild(installButton);
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI to notify the user they can install the PWA
+            installButton.style.display = 'block';
+        });
+
+        installButton.addEventListener('click', async () => {
+            // Hide the install button
+            installButton.style.display = 'none';
+            // Show the install prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`User response to the install prompt: ${outcome}`);
+            // We've used the prompt, and can't use it again, throw it away
+            deferredPrompt = null;
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            installButton.style.display = 'none';
         });
     </script>
 </body>

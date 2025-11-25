@@ -1,0 +1,63 @@
+{
+  "name": "Sistema de Estadías UTH",
+  "short_name": "Estadías UTH",
+  "description": "Sistema de gestión de estadías para la Universidad Tecnológica de Huejotzingo",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#009d82",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/img/logo_uth_2024.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/logo_uth_2024.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "lang": "es-MX",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/img/logo_uth_2024.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Vista del dashboard del Sistema de Estadías UTH"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Iniciar Sesión",
+      "url": "/login",
+      "description": "Acceder al sistema de estadías",
+      "icons": [
+        {
+          "src": "/img/logo_uth_2024.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "url": "/dashboard",
+      "description": "Ir al panel principal",
+      "icons": [
+        {
+          "src": "/img/logo_uth_2024.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}
