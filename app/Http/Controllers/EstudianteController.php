@@ -480,7 +480,7 @@ class EstudianteController extends Controller
     {
         $user = Auth::user();
         $estudiante = $user->estudiante;
-        $carreras = Carrera::where('estado', 'activa')->get();
+        $carreras = Carrera::where('activa', true)->get();
         
         // Estadísticas para el perfil
         $estadisticas = [
@@ -544,8 +544,7 @@ class EstudianteController extends Controller
                     'telefono_emergencia' => $request->telefono_emergencia,
                     'direccion' => $request->direccion,
                     'fecha_nacimiento' => $request->fecha_nacimiento,
-                    'estado_civil' => $request->estado_civil,
-                    'estado' => 'activo'
+                    'estado_civil' => $request->estado_civil
                 ]);
             }
             

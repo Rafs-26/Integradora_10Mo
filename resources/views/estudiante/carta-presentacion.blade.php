@@ -195,7 +195,7 @@
                                     {{ $solicitudCarta->archivo_firmado ? 'Descargar Carta Firmada' : 'Descargar Carta de Presentación' }}
                                 </a>
                             </div>
-                        @elseif(in_array($solicitudCarta->estado, ['rechazada', 'rechazada_profesor']))
+                        @elseif(in_array($solicitudCarta->estado, ['rechazada', 'rechazada_profesor', 'rechazada_director']))
                             <div class="flex justify-center">
                                 <button onclick="solicitarNuevaCarta()" 
                                         class="inline-flex items-center px-6 py-3 bg-yellow-600 text-white font-medium rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
@@ -236,6 +236,14 @@
                         <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
                             <h5 class="text-sm font-medium text-blue-800 mb-2">Comentarios del coordinador:</h5>
                             <p class="text-sm text-blue-700">{{ $solicitudCarta->comentarios_coordinador }}</p>
+                        </div>
+                        @endif
+
+                        @if($solicitudCarta->comentarios_director && $solicitudCarta->estado === 'rechazada_director')
+                        <div class="mt-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                            <h5 class="text-sm font-medium text-red-800 mb-2">Motivo del rechazo (Director):</h5>
+                            <p class="text-sm text-red-700">{{ $solicitudCarta->comentarios_director }}</p>
+                            <p class="text-xs text-red-600 mt-2">Puedes corregir la información y solicitar de nuevo tu carta.</p>
                         </div>
                         @endif
                         

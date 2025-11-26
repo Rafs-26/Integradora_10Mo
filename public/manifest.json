@@ -4,36 +4,29 @@
   "description": "Sistema de gestión de estadías para la Universidad Tecnológica de Huejotzingo",
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["standalone", "fullscreen"],
   "background_color": "#ffffff",
   "theme_color": "#009d82",
   "orientation": "portrait-primary",
   "icons": [
-    {
-      "src": "/img/logo_uth_2024.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/img/logo_uth_2024.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    { "src": "/img/logo_uth_2024.png", "sizes": "500x390", "type": "image/png", "purpose": "any" },
+    { "src": "/img/logosistema48_48.jpg", "sizes": "48x48", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema72_72.jpg", "sizes": "72x72", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema96_96.jpg", "sizes": "96x96", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema128_128.jpg", "sizes": "128x128", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema144_144.jpg", "sizes": "144x144", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema152_152.jpg", "sizes": "152x152", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema192_192.jpg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema256_256.jpg", "sizes": "256x256", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema384_384.jpg", "sizes": "384x384", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema512_512.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any" },
+    { "src": "/img/logosistema1024_1024.jpg", "sizes": "1024x1024", "type": "image/jpeg", "purpose": "any" }
   ],
   "categories": ["education", "productivity"],
   "lang": "es-MX",
   "dir": "ltr",
   "scope": "/",
-  "screenshots": [
-    {
-      "src": "/img/logo_uth_2024.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "platform": "wide",
-      "label": "Vista del dashboard del Sistema de Estadías UTH"
-    }
-  ],
+  
   "shortcuts": [
     {
       "name": "Iniciar Sesión",
@@ -41,9 +34,9 @@
       "description": "Acceder al sistema de estadías",
       "icons": [
         {
-          "src": "/img/logo_uth_2024.png",
+          "src": "/img/logosistema96_96.jpg",
           "sizes": "96x96",
-          "type": "image/png"
+          "type": "image/jpeg"
         }
       ]
     },
@@ -53,9 +46,9 @@
       "description": "Ir al panel principal",
       "icons": [
         {
-          "src": "/img/logo_uth_2024.png",
+          "src": "/img/logosistema96_96.jpg",
           "sizes": "96x96",
-          "type": "image/png"
+          "type": "image/jpeg"
         }
       ]
     }

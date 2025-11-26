@@ -7,6 +7,7 @@ use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\BibliotecaController;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\DirectorController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +34,16 @@ Route::middleware(['auth', 'role:Administrador'])->group(function () {
     Route::get('/admin/dashboard', function () {
         return view('administrador.dashboard');
     })->name('admin.dashboard');
+    Route::get('/admin/perfil', function () {
+        return view('administrador.perfil');
+    })->name('admin.perfil');
 });
 
 Route::middleware(['auth', 'role:Director'])->group(function () {
     Route::get('/director/dashboard', [DirectorController::class, 'dashboard'])->name('director.dashboard');
+    Route::get('/director/perfil', function () {
+        return view('director.perfil');
+    })->name('director.perfil');
     
     // Gestión de Estadías
     Route::get('/director/estadias-activas', [DirectorController::class, 'estadiasActivas'])->name('director.estadias-activas');
@@ -128,6 +135,9 @@ Route::middleware(['auth', 'role:Biblioteca'])->group(function () {
     Route::get('/biblioteca/dashboard', function () {
         return view('biblioteca.dashboard');
     })->name('biblioteca.dashboard');
+    Route::get('/biblioteca/perfil', function () {
+        return view('biblioteca.perfil');
+    })->name('biblioteca.perfil');
 });
 
 // General Dashboard Route (redirects based on role)
@@ -161,3 +171,8 @@ Route::middleware(['auth', 'role:Administrador'])->group(function () {
         Route::get('/descargar-memoria/{id}', [BibliotecaController::class, 'descargarMemoria'])->name('descargar-memoria');
         Route::get('/estadisticas', [BibliotecaController::class, 'estadisticas'])->name('estadisticas');
     });
+
+// Test Navigation Route
+Route::get('/test-navigation', function () {
+    return view('test-navigation');
+})->middleware('auth')->name('test.navigation');

@@ -1,0 +1,100 @@
+/* UTH Green Color Palette */
+:root {
+    --uth-green: #009d82;
+    --uth-green-light: #00b894;
+    --uth-green-dark: #007a63;
+}
+
+/* UTH Green Background Classes */
+.bg-uth-green {
+    background-color: var(--uth-green);
+}
+
+.bg-uth-green-light {
+    background-color: var(--uth-green-light);
+}
+
+.bg-uth-green-dark {
+    background-color: var(--uth-green-dark);
+}
+
+/* UTH Green Text Classes */
+.text-uth-green {
+    color: var(--uth-green);
+}
+
+.text-uth-green-light {
+    color: var(--uth-green-light);
+}
+
+.text-uth-green-dark {
+    color: var(--uth-green-dark);
+}
+
+/* UTH Green Border Classes */
+.border-uth-green {
+    border-color: var(--uth-green);
+}
+
+.border-uth-green-light {
+    border-color: var(--uth-green-light);
+}
+
+.border-uth-green-dark {
+    border-color: var(--uth-green-dark);
+}
+
+/* UTH Green Hover Effects */
+.hover\:text-uth-green:hover {
+    color: var(--uth-green);
+}
+
+.hover\:bg-uth-green:hover {
+    background-color: var(--uth-green);
+}
+
+.hover\:text-uth-green-dark:hover {
+    color: var(--uth-green-dark);
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-to-r.from-uth-green.to-uth-green-light {
+    background: linear-gradient(to right, var(--uth-green), var(--uth-green-light));
+}
+
+/* Focus Ring */
+.focus\:ring-uth-green:focus {
+    --tw-ring-color: var(--uth-green);
+}
+
+/* Notification Badge Animation */
+.notification-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    backdrop-filter: blur(4px);
+}
+
+/* Sidebar Transitions */
+.sidebar-transition {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Dropdown Animations */
+.dropdown-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.dropdown-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.2s ease-out;
+}

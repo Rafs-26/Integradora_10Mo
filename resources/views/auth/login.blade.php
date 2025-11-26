@@ -231,12 +231,15 @@
                             const newWorker = registration.installing;
                             newWorker.addEventListener('statechange', () => {
                                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    // New content available, show update notification
-                                    if (confirm('Hay una nueva versión disponible. ¿Deseas actualizar?')) {
-                                        window.location.reload();
-                                    }
+                                    // Activar inmediatamente la nueva versión del SW
+                                    registration.waiting && registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+                                    window.location.reload();
                                 }
                             });
+                        });
+                        // Recargar en cambio de controlador
+                        navigator.serviceWorker.addEventListener('controllerchange', () => {
+                            window.location.reload();
                         });
                     })
                     .catch(error => {
